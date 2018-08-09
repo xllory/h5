@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #try{
+        width: 600px;
+        height:400px;
+        background: aquamarine;
+    }
+    img{
+        width:40px;
+    }
+</style>
+<body>
+<div id="try">
+    <!--<img src="img/1.jpg" id="img">-->
+    <li class="aa">fdfsdfs</li>
+    <li>dfsdfsfs</li>
+    <li>fdfsdfssfs</li>
+    <li>fdfsdfs</li>
+    <li>fdfsdfs</li>
+    <li>fdfsdfs</li>
+    <li>fdfsdfs</li>
+</div>
+<script>
+     var box=document.getElementById("try");
+     console.log(box);
+     var aa=box.firstElementChild;
+     var bb=aa.nextElementSibling;
+     bb.parentNode.removeChild(bb);
+     console.log(bb);
+     // var aa=document.getElementsByClassName('aa');
+
+     // console.log(li);
+     // li1.style.background="red";
+     // var img=document.createElement("img");
+     // img.src="img/1.jpg";
+     // box.appendChild(img);
+     // var img1=document.getElementById("img");
+     // console.log(img1);
+     // img1.remove();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox">1.西瓜<br>
+<input type="checkbox">2.香瓜<br>
+<input type="checkbox">3.冬瓜<br>
+<input type="checkbox">4.南瓜<br>
+<button value="" id="both">全选</button>
+<button value="" id="canel">取消选</button>
+<button value="" id="fan">反选</button>
+<script>
+    function $(id){
+        return typeof id==="string"?document.getElementById(id):null;
+    }
+    var input=document.querySelectorAll("input");
+    $("both").onclick=function () {
+        for(var i=0;i<input.length;i++)
+        input[i].checked=true;
+
+
+    };
+    $("canel").onclick=function () {
+        for(var i=0;i<input.length;i++)
+            input[i].checked=false;
+
+
+    };
+    $("fan").onclick=function () {
+        for(var i=0;i<input.length;i++)
+            input[i].checked=!input[i].checked;
+
+
+    };
+
+</script>
+</body>
+</html>

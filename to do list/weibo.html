@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<style>
+		body{
+			background:url("img/bg3.jpg");
+			background-attachment: fixed;
+			background-size: 100% 100%;
+			/*background: no-repeat;*/
+		}
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		li{
+			list-style: none;
+			line-height: 32px;
+			font-size: 25px;
+			border-bottom: 1px dashed gainsboro;
+		}
+		#box{
+			width:800px;
+			/*border:1px solid #ccc;*/
+			margin:240px auto;
+			padding:20px;
+		}
+		#myd{
+			width:80%;
+			height:120px;
+		}
+		.box-top{
+			margin-bottom:20px;
+		}
+		#ul{
+			margin-top: 30px;
+		}
+
+		textarea{
+			background: gainsboro;
+		}
+		h3{
+			font-family: "Bitstream Charter";
+			color: #953f40;
+			margin-bottom: 30px;
+		}
+		#btn {
+			background: #d5bfb2;
+			width: 100px;
+			height: 30px;
+			line-height: 29px;
+			border-radius: 10px;
+			color: #a55c4c;
+		}
+		/*.complete{*/
+			/*background: gray;*/
+		/*}*/
+		#bbb button{
+			width:100px;
+			height:35px;
+		}
+		.shan{
+			float:right;
+			width:36px;
+			height:28px;
+		}
+		.label1{
+			text-decoration: line-through;
+		}
+
+	</style>
+</head>
+<body>
+<div id="box">
+	<div class="box-top">
+		<!--<img src="../img/3.jpg" style="width:24px">-->
+		<h3>今日任务:</h3>
+		<textarea id="myd" cols="30" rows="10" ></textarea></br>
+		<button id="btn">发表</button>
+	</div>
+	<div id="bbb">
+
+	<button id="all">ALL</button>
+	<button id="active">Active</button>
+	<button id="complete">Complete</button>
+		<button id="clear">Clear</button>
+	</div>
+	<ul id="ul">
+    </ul>
+	</div>
+</div>
+<script>
+	window.onload=function () {
+		var input_checked=[];
+		$("btn").onclick = function () {
+			var content = $('myd').value;
+			if (content.length === 0) {
+				alert("空");
+				return;
+			}
+			var li = document.createElement("li");
+			var div = document.createElement("div");
+			var input = document.createElement("input");
+			var label = document.createElement("label");
+			var img = document.createElement("img");
+			li.appendChild(div);
+			div.appendChild(input);
+			div.appendChild(label);
+			div.appendChild(img);
+			input.type = "checkbox";
+			label.innerText = content;
+			img.src="img/shan.png";
+			img.className="shan";
+			$("ul").insertBefore(li, $("ul").children[0]);
+			$('myd').value = '';
+			var but = $("ul").getElementsByTagName("img");
+
+
+                for (var i = 0; i < but.length; i++) {
+				but[i].onclick = function () {
+					this.parentNode.parentNode.remove();
+				}
+			}
+			var label2=document.getElementsByTagName("label");
+			var input2=document.getElementsByTagName("input");
+			// console.log("fddfd");
+            for(let i=0;i<label2.length;i++){
+                label2[i].ondblclick=function(){
+                    var edit=label2[i].innerHTML;
+                    if(edit.indexOf('type="text"')>0){
+                        return ;
+					}
+                    var input_edit=document.createElement("input");
+                    input_edit.type='text';
+                    input_edit.value=edit;
+                    input_edit.onblur=function () {
+                        label2[i].innerHTML=this.value==edit?edit:this.value;
+
+                    };
+                    label2[i].innerHTML="";
+                    label2[i].appendChild(input_edit);
+                    input_edit.setSelectionRange(0,edit.length);
+                    input_edit.focus();
+                    // alert(input_edit.value);
+                }
+            }
+		};
+        var input2=document.getElementsByTagName("input");
+		$("all").addEventListener('click', function(){
+			for(var i=0;i<input2.length;i++){
+			    if(input2[i].checked===true){
+                	input2[i].nextSibling.className="label1";
+            		}
+				 		input2[i].parentNode.parentNode.style.display="block";
+
+					    input2[i].onclick=function(){
+						this.parentNode.parentNode.style.display = "block";
+					}
+				}
+		});
+        $("active").onclick=function  active() {
+			for(var i=0;i<input2.length;i++) {
+				if (input2[i].checked === false) {
+					input2[i].parentNode.parentNode.style.display = "block";
+					input_checked.push(input2[i]);
+					for(var j=0;j<input_checked.length;j++){
+						input_checked[j].onclick=function shanchu(){
+							this.parentNode.parentNode.style.display = "none";
+						}
+					}
+				}
+				else {
+					input2[i].parentNode.parentNode.style.display = "none";
+				}
+			}
+        };
+        $("complete").onclick=function () {
+			for(var i=0;i<input2.length;i++){
+				if(input2[i].checked===true){
+					input2[i].parentNode.parentNode.style.display="block";
+				}else
+				{
+					input2[i].parentNode.parentNode.style.display="none";
+				}
+			}
+        };
+        $("clear").onclick=function () {
+            console.log(input2.length);
+            for(var i=0;i<input2.length;i++){
+				input2[i].parentNode.parentNode.remove();
+
+			}
+        };
+
+        var input1=$("ul").getElementsByTagName("input");
+        console.log(input1.length);
+        for (var i = 0; i < input1.length; i++){
+            if(input1[i].checked===false){
+
+                // input[i].nextSibling.className="label1";
+                console.log(input1[i].nextSibling);
+            }
+        }
+	};
+	function $(id){
+			return typeof id==="string"?document.getElementById(id):null;
+		}
+
+</script>
+</body>
+</html>

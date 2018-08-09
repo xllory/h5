@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #big{
+            width:800px;
+            height:500px;
+        }
+        li img{
+            width:200px;
+        }
+        li{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>风景</p>
+    <img src="img/1.jpg" id="big"/>
+    <ul id="list">
+        <li>
+            <a href="img/2.jpg" title="风景2">
+                <img src="img/2.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="img/3.jpg" title="风景3">
+                <img src="img/3.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="img/4.jpg" title="风景4">
+                <img src="img/4.jpg">
+            </a>
+        </li>
+        <li>
+            <a href="img/5.jpg">
+                <img src="img/5.jpg" title="风景5">
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    window.onload=function () {
+        var big=document.getElementById("big");
+        var ul=document.getElementById("list");
+        var small=ul.getElementsByTagName("a");
+        for(var i=0;i<small.length;i++){
+            small[i].onclick=function () {
+                // console.log(this.href);
+                big.src=this.href ;
+                return false;
+
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

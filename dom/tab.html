@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #big{
+            width:598px;
+            height:120px;
+            margin:100px auto;
+            border:1px solid indianred;
+        }
+        li{
+           list-style: none;
+            width:120px;
+            text-align: center;
+            display: inline-block;
+
+        }
+        #header{
+            background: gray;
+            height:40px;
+            line-height:40px;
+        }
+        #header ul{
+            width:600px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        #header ul li.selected{
+            background-color: #fff;
+            border-bottom:none;
+            /*border-left:1px solid #cccccc;*/
+            border-right:1px solid #cccccc;
+
+        }
+        #container .essay{
+            display: none;
+
+        }
+        #container ul li{
+            float:left;
+            width:220px;
+            text-align:center;
+            margin:10px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="big">
+    <div id="header">
+        <ul>
+            <li class="selected">首页</li>
+            <li>主页</li>
+            <li>音乐</li>
+            <li>美食</li>
+            <li>撒花</li>
+            <li>哈哈</li>
+        </ul>
+
+    </div>
+    <div id="container">
+        <div class="essay" style="display: block">
+            <ul>
+           <li><a>还放假死哦合法护发素vbjdvb</a></li>
+           <li><a>还放假死哦合法护发素vbjdvb</a></li>
+           <li><a>还放假死哦合法护发素vbjdvb</a></li>
+           <li><a>还放假死哦合法护发素vbjdvb</a></li>
+            </ul>
+        </div>
+        <div class="essay" >
+            <ul>
+                <li><a>打几分地结束了南非开没</a></li>
+                <li><a>打几分地结束了南非开没</a></li>
+                <li><a>打几分地结束了南非开没</a></li>
+                <li><a>打几分地结束了南非开没</a></li>
+
+            </ul>
+        </div>
+        <div class="essay"  >
+            <ul>
+                <ul>
+                    <li><a>五金扣积分可能分开都是您付款</a></li>
+                    <li><a>五金扣积分可能分开都是您付款</a></li>
+                    <li><a>五金扣积分可能分开都是您付款</a></li>
+                    <li><a>五金扣积分可能分开都是您付款</a></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="essay"  style="">
+            <ul>
+                <li><a>其实很多事是规范规定发给</a></li>
+                <li><a>其实很多事是规范规定发给</a></li>
+                <li><a>其实很多事是规范规定发给</a></li>
+                <li><a>其实很多事是规范规定发给</a></li>
+
+            </ul>
+        </div>
+        <div class="essay">
+            <ul>
+                <li><a>嘿嘿嘿嘿嘿大多发生的</a></li>
+                <li><a>嘿嘿嘿嘿嘿大多发生的</a></li>
+                <li><a>嘿嘿嘿嘿嘿大多发生的</a></li>
+                <li><a>嘿嘿嘿嘿嘿大多发生的</a></li>
+            </ul>
+        </div>
+        <div class="essay"  >
+            <ul>
+                <ul>
+                    <li><a>撒回答还能当你烦恼是对方</a></li>
+                    <li><a>撒回答还能当你烦恼是对方</a></li>
+                    <li><a>撒回答还能当你烦恼是对方</a></li>
+                    <li><a>撒回答还能当你烦恼是对方</a></li>
+
+                </ul>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function $(id) {
+
+        return typeof id==="string" ? document.getElementById(id) : null;
+}
+var lis=$('header').getElementsByTagName("li");
+var dom=$('container').getElementsByClassName('essay');
+
+for(var i=0;i<lis.length;i++){
+    lis[i].index=i;
+    lis[i].onmouseover=function () {
+        for(var j=0;j<lis.length;j++){
+            lis[j].className="";
+            console.log(dom[j]);
+             dom[j].style.display="none";
+        }
+       this.className="selected";
+        dom[this.index].style.display="block";
+
+    };
+}
+</script>
+</body>
+</html>
